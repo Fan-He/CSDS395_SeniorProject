@@ -6,9 +6,9 @@ import Product from './Product'
 function Home() {
   return (
     <div className='home'>
-        <div className='home__container'>
-            <img className='home__image' src={Cats} alt=""></img>
-            <div className='home__row'>
+        <div className='home_container'>
+            <img className='home_image' src={Cats} alt=""></img>
+            <div className='home_row'>
                 <Product 
                 id="1123" 
                 title='Instinct Ultimate Protein Duck Recipe 4-lb bag' 
@@ -24,7 +24,7 @@ function Home() {
                 
             </div>
 
-            <div className='home__row'>
+            <div className='home_row'>
                 <Product 
                 id="2134" 
                 title='Frisco Animal Series Cat Condo, Llama' 
@@ -45,7 +45,7 @@ function Home() {
                 rating={4}/>
             </div>
 
-            <div className='home__row'>
+            <div className='home_row'>
                 <Product 
                 id="3101" 
                 title='Wellness CORE Signature Flaked Tuna & Wild Salmon Canned Cat Food' 

@@ -6,7 +6,7 @@
     max-width: 1200px;
 }
 
-.home__row {
+.home_row {
     display: flex;
     z-index: 1;
     margin-left: 5px;
@@ -15,7 +15,7 @@
 }
 
 
-.home__image {
+.home_image {
     width: 100%;
     z-index: -1;
     margin-bottom: -100px;

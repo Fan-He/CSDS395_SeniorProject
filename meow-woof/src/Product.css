@@ -20,13 +20,13 @@
     margin-bottom: 15px;
 }
 
-.product__info {
+.product_info {
     height: 100px;
     margin-bottom: 15px;
     font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
-.product__price {
+.product_price {
     margin-top: 5px;
 }
 
@@ -38,7 +38,7 @@
     color: rgb(14, 65, 109);
 }
 
-.product__rating {
+.product_rating {
     display: flex;
 }
 

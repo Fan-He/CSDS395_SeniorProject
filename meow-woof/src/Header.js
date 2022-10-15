@@ -13,48 +13,50 @@ function Header() {
     return (
         <div className='header'>
             <Link to="/">
-                <img className="header__logo" src={logo} alt=""></img>
+                <img className="header_logo" src={logo} alt=""></img>
             </Link>
 
-            <div className="header__search" type="text">
-                <input className='header__searchInput' type="text" />
-                <SearchIcon className="header__searchIcon"/>
+            <div className="header_search" type="text">
+                <input className='header_searchInput' type="text" />
+                <SearchIcon className="header_searchIcon"/>
             </div>
 
 
-            <div className="header__nav">
-                <div className="header__option">
-                    <span className='header__optionLineOne'>
-                        Hello Guest
-                    </span>
-                    <span className='header__optionLineTwo'>
-                        Sign In
-                    </span>
-                </div>
+            <div className="header_nav">
+                <Link to="/login">
+                    <div className="header_option">
+                        <span className='header_optionLineOne'>
+                            Hello Guest
+                        </span>
+                        <span className='header_optionLineTwo'>
+                            Sign In
+                        </span>
+                    </div>
+                </Link>
 
-                <div className="header__option">
-                    <span className='header__optionLineOne'>
+                <div className="header_option">
+                    <span className='header_optionLineOne'>
                         Returns
                     </span>
-                    <span className='header__optionLineTwo'>
+                    <span className='header_optionLineTwo'>
                         & Orders
                     </span>
                 </div>
 
-                <div className="header__option">
-                    <span className='header__optionLineOne'>
+                <div className="header_option">
+                    <span className='header_optionLineOne'>
                         Your
                     </span>
-                    <span className='header__optionLineTwo'>
+                    <span className='header_optionLineTwo'>
                         Prime
                     </span>
                 </div>
 
                 <Link to="/checkout">
-                    <div className='header__optionBasket'>
+                    <div className='header_optionBasket'>
                         <ShoppingBasketTwoToneIcon/>
                         {/* two class names */}
-                        <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
+                        <span className="header_optionLineTwo header_basketCount">{basket?.length}</span>
                     </div>
                 </Link>
             </div>
