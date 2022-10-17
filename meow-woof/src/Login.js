@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css'
 import logo from './images/logo.png'
 import { Link } from "react-router-dom"
 
 function Login() {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const signIn = e => {
+    //no refreshing in react
+    e.preventDefault();
+
+    //firebase login stuff
+
+  }
+
+  const register = e => {
+    e.preventDefault();
+
+    //firebase register stuff
+
+  }
+
   return (
     <div className='login'>
         <Link to='/'>
@@ -15,12 +34,14 @@ function Login() {
 
           <form>
             <h5>E-mail</h5>
-            <input type='text'/>
+            <input type='text' value={email} onChange=
+            {e => setEmail(e.target.value)}/>
 
             <h5>Password</h5>
-            <input type='password'/>
+            <input type='password' value={password} onChange=
+            {e => setPassword(e.target.value)}/>
 
-            <button className='login_signin_button'>Sign In</button>
+            <button type='submit' onClick={signIn} className='login_signin_button'>Sign In</button>
           </form>
 
           <p>
@@ -29,7 +50,7 @@ function Login() {
 
         </div>
 
-        <div className='login_container'>
+        <div onClick={register} className='login_container'>
           <h5>Don't have an account? </h5>
           <button className='login_register_button'>Creat Account</button>
         </div>
