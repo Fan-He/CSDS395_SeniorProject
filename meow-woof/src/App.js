@@ -7,6 +7,7 @@ import Login from "./Login"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { db } from './firebase-config'
 import { collection, getDocs } from 'firebase/firestore'
+import Signup from "./Signup";
 
 function App() {
     const [users, setUsers] = useState([]);
@@ -25,18 +26,11 @@ function App() {
     // BEM
     <Router>
       <div className="app">
-          {users.map((user) => {
-            return (
-                <div>
-                    <h1>First Name: {user.firstName}</h1>
-                    <h1>Last Name: {user.lastName}</h1>
-                </div>
-            );
-          })}
         <Routes>
           <Route path="/checkout" element={[<Header/>, <Checkout />]}/>
           <Route path="/" element={[<Header/>, <Home />]}/>
           <Route path="/login" element={[<Login/>]}/>
+            <Route path="/signup" element={[<Signup/>]}/>
         </Routes>
       </div>
     </Router>

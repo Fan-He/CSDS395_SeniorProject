@@ -1,48 +1,77 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Login.css'
 import logo from './images/logo.png'
 import { Link } from "react-router-dom"
 import { signInWithGoogle } from "./firebase-config";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut,
+} from "firebase/auth";
+import "./App.css";
+import { auth } from "./firebase-config";
 
 function Login() {
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+    const [user, setUser] = useState({});
 
-  const signIn = e => {
-    //no refreshing in react
-    e.preventDefault();
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
 
-    //firebase login stuff
+    }, [])
 
-  }
+    const login = async () => {
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginEmail,
+                loginPassword
+            );
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
-  const register = e => {
-    e.preventDefault();
+    const logout = async () => {
+        await signOut(auth);
+    };
 
-    //firebase register stuff
-
-  }
 
   return (
+
     <div className='login'>
+        <h4> User Logged In: </h4>
+        {user ? user.email : "Not Logged In"}
         <Link to='/'>
             <img className='login_logo' src={logo} alt=''/>
         </Link>
 
         <div className='login_container'>
           <h1>Login</h1>
-
           <form>
-            <h5>E-mail</h5>
-            <input type='text' value={email} onChange=
-            {e => setEmail(e.target.value)}/>
+            <h5>Email</h5>
+              <input
+                  placeholder="Email"
+                  onChange={(event) => {
+                      setLoginEmail(event.target.value);
+                  }}
+              />
 
             <h5>Password</h5>
-            <input type='password' value={password} onChange=
-            {e => setPassword(e.target.value)}/>
-
-            <button type='submit' onClick={signIn} className='login_signin_button'>Sign In</button>
+              <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={(event) => {
+                      setLoginPassword(event.target.value);
+                  }}
+              />
+              <button onClick={login} className='login_signin_button'>Sign In</button>
           </form>
 
             <hr className="my-4" />
@@ -60,10 +89,13 @@ function Login() {
           </p>
         </div>
 
-        <div onClick={register} className='login_container'>
-          <h5>Don't have an account? </h5>
-          <button className='login_register_button'>Create Account</button>
-        </div>
+        <h5>Don't have an account? </h5>
+        <Link to="/signup">
+            <button className='login_register_button'>Create Account</button>
+        </Link>
+
+        <button onClick={logout}> Sign Out </button>
+
     </div>
   )
 }
