@@ -10,7 +10,12 @@ function Header() {
 
     const [{basket}, dispatch] = useStateValue();
 
+    const mapState = (state) => ({
+        currentUser: state.user.currentUser
+    });
+
     return (
+
         <div className='header'>
             <Link to="/">
                 <img className="header_logo" src={logo} alt=""></img>
@@ -23,6 +28,7 @@ function Header() {
 
 
             <div className="header_nav">
+
                 <Link to="/login">
                     <div className="header_option">
                         <span className='header_optionLineOne'>
