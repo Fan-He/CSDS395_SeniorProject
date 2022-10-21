@@ -4,6 +4,7 @@ import Header from './Header';
 import Home from "./Home"
 import Checkout from "./Checkout"
 import Login from "./Login"
+import ProductDetail from './ProductDetail'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { db } from './firebase-config'
 import { collection, getDocs } from 'firebase/firestore'
@@ -22,15 +23,18 @@ function App() {
         getUsers()
     }, [])
 
+    
+
   return (
     // BEM
     <Router>
       <div className="app">
           <Routes>
-          <Route path="/checkout" element={[<Header/>, <Checkout />]}/>
-          <Route path="/" element={[<Header/>, <Home />]}/>
-          <Route path="/login" element={[<Login/>]}/>
+            <Route path="/checkout" element={[<Header/>, <Checkout />]}/>
+            <Route path="/" element={[<Header/>, <Home />]}/>
+            <Route path="/login" element={[<Login/>]}/>
             <Route path="/signup" element={[<Signup/>]}/>
+            <Route path='/productdetail/*' element={[<ProductDetail/>]}/>
         </Routes>
       </div>
     </Router>
