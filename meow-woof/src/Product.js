@@ -4,7 +4,7 @@ import { useStateValue } from "./StateProvider"
 import { Link, useNavigate } from "react-router-dom"
 
 
-function Product({id, title, image, price, rating}) {
+function Product({id, title, image, price, rating, detail}) {
 
   const [{ basket }, dispatch] = useStateValue();
 
@@ -14,7 +14,7 @@ function Product({id, title, image, price, rating}) {
 
   const navigate = useNavigate();
 
-  const toProductDetail=()=>{navigate('/productdetail',{state:{id: id, title:title, image:image, price:price, rating:rating}});console.log("title is clicked");
+  const toProductDetail=()=>{navigate('/productdetail',{state:{id: id, title:title, image:image, price:price, rating:rating, detail:detail}});console.log("title is clicked");
   }
 
   const clickTitle=()=>{console.log("title is clicked");
@@ -31,7 +31,8 @@ function Product({id, title, image, price, rating}) {
         title: title, 
         image: image, 
         price: price, 
-        rating: rating
+        rating: rating,
+        detail: detail
       },
     });
   };
@@ -57,7 +58,7 @@ function Product({id, title, image, price, rating}) {
 
         <img src={image} alt=""/>
         <button onClick={addToBasket}>Add to Basket</button>
-        <button onClick={toProductDetail}>to detail</button>
+        {/* <button onClick={toProductDetail}>to detail</button> */}
     </div>
   )
 }

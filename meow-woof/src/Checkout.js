@@ -26,6 +26,7 @@ function Checkout() {
                     image={item.image}
                     price={item.price}
                     rating={item.rating}
+                    detail={item.detail}
                   />
                 ))}
             </div>

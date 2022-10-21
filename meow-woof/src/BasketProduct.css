@@ -9,7 +9,6 @@
 
 .basketProduct__info {
     padding-left: 20px;
-
 }
 
 .basketProduct__info > button {
@@ -18,7 +17,8 @@
     border: 1px solid gray;
     margin-top: 10px;
     color:black;
-    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-family: Comic Sans MS, Comic Sans, cursive; 
+    margin-left: 10px;
 }
 
 .basketProduct__image {
@@ -34,4 +34,8 @@
 .basketProduct__title {
     font-size: 17px;
     font-weight: 800;
+}
+
+.basketProduct__price {
+    width: min-content;
 }
