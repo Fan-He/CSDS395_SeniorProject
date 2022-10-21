@@ -26,7 +26,7 @@ function App() {
     // BEM
     <Router>
       <div className="app">
-        <Routes>
+          <Routes>
           <Route path="/checkout" element={[<Header/>, <Checkout />]}/>
           <Route path="/" element={[<Header/>, <Home />]}/>
           <Route path="/login" element={[<Login/>]}/>
