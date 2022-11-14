@@ -18,6 +18,7 @@ function Login() {
 
     const [user, setUser] = useState({});
 
+
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -32,6 +33,7 @@ function Login() {
                 loginEmail,
                 loginPassword
             );
+            console.log("success");
             console.log(user);
         } catch (error) {
             console.log(error.message);
