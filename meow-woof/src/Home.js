@@ -1,18 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import "./Home.css"
 import Cats from './images/cats.jpg'
 import Product from './Product'
 import { Link } from "react-router-dom"
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "./firebase-config";
 
 function Home() {
-  return (
+
+    return (
     <div className='home'>
-        <div className='home_container'>
+            <div className='home_container'>
             <img className='home_image' src={Cats} alt=""></img>
             <div className='home_row'>
+
                 <Product 
                 id="1123" 
-                title='Instinct Ultimate Protein Duck Recipe 4-lb bag' 
+                title='Instinct Ultimate Protein Duck Recipe 4-lb bag'
                 image="https://cdn.shopify.com/s/files/1/1957/5661/products/43355-1558541199_8b4425d6-84a2-42d7-8700-c28eae9d4e0e_1000x1000.jpg?v=1594824869"
                 price={39.99} 
                 rating={4}
@@ -123,7 +127,9 @@ function Home() {
                 Each meal contains nutrient-dense organ meat and shredded chicken in a whisker-licking broth.
                 This low-calorie cat food contains high-moisture content to give your kitty the supplemental water he needs.
                 Nutritionally balanced for feline friends from all life stages."/>
+
             </div>
+
         </div>
     </div>
 
