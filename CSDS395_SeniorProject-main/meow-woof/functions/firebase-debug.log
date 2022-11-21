@@ -1,0 +1,108 @@
+[debug] [2022-11-16T03:02:44.248Z] ----------------------------------------------------------------------
+[debug] [2022-11-16T03:02:44.249Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js functions:shell
+[debug] [2022-11-16T03:02:44.250Z] CLI Version:   11.16.1
+[debug] [2022-11-16T03:02:44.250Z] Platform:      win32
+[debug] [2022-11-16T03:02:44.250Z] Node Version:  v16.18.1
+[debug] [2022-11-16T03:02:44.251Z] Time:          Tue Nov 15 2022 22:02:44 GMT-0500 (北美东部标准时间)
+[debug] [2022-11-16T03:02:44.251Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-16T03:02:44.301Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-16T03:02:44.301Z] > authorizing via signed-in user (yxl2298@case.edu)
+[debug] [2022-11-16T03:02:44.302Z] [iam] checking project csds395-70432 for permissions ["firebase.projects.get"]
+[debug] [2022-11-16T03:02:44.303Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/csds395-70432:testIamPermissions [none]
+[debug] [2022-11-16T03:02:44.303Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/csds395-70432:testIamPermissions x-goog-quota-user=projects/csds395-70432
+[debug] [2022-11-16T03:02:44.303Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/csds395-70432:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-11-16T03:02:44.502Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/csds395-70432:testIamPermissions 200
+[debug] [2022-11-16T03:02:44.503Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/csds395-70432:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-11-16T03:02:44.506Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2022-11-16T03:02:44.519Z] [functions] Using node@16 from host.
+[debug] [2022-11-16T03:02:44.519Z] defaultcredentials: writing to file C:\Users\kevin\AppData\Roaming\firebase\yxl2298_case_edu_application_default_credentials.json
+[debug] [2022-11-16T03:02:44.520Z] DEBUG: Setting GAC to C:\Users\kevin\AppData\Roaming\firebase\yxl2298_case_edu_application_default_credentials.json
+[debug] [2022-11-16T03:02:44.520Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/csds395-70432/adminSdkConfig [none]
+[debug] [2022-11-16T03:02:44.924Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/csds395-70432/adminSdkConfig 200
+[debug] [2022-11-16T03:02:44.924Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/csds395-70432/adminSdkConfig {"projectId":"csds395-70432","databaseURL":"https://csds395-70432-default-rtdb.firebaseio.com","storageBucket":"csds395-70432.appspot.com","locationId":"us-central"}
+[debug] [2022-11-16T03:02:44.932Z] [functions] Watching "C:\Users\kevin\Desktop\CSDS395_SeniorProject-main\meow-woof\functions" for Cloud Functions...
+[debug] [2022-11-16T03:02:44.936Z] Validating nodejs source
+[debug] [2022-11-16T03:02:47.322Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "algoliasearch": "^4.14.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2",
+    "react-instantsearch-hooks-web": "^6.38.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true,
+  "type": "module"
+}
+[debug] [2022-11-16T03:02:47.323Z] Building nodejs source
+[debug] [2022-11-16T03:02:47.323Z] Analyzing nodejs backend spec
+[debug] [2022-11-16T03:02:47.324Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-16T03:02:47.508Z] Serving at port 9005
+
+[debug] [2022-11-16T03:02:47.764Z] Got response from /__/functions.yaml {"endpoints":{"ideaIndexAdd":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","eventFilters":{"resource":"projects/csds395-70432/databases/(default)/documents/product/{productId}"},"retry":false},"labels":{},"entryPoint":"ideaIndexAdd"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-16T03:02:47.769Z] shutdown requested via /__/quitquitquit
+
+[debug] [2022-11-16T03:02:47.779Z] [functions] Loaded functions definitions from source: ideaIndexAdd.
+[debug] [2022-11-16T03:02:47.779Z] [functions[us-central1-ideaIndexAdd]] function ignored because the firestore emulator does not exist or is not running.
+[info] i  functions: Loaded functions: ideaIndexAdd 
+[warn] !  functions: The following emulators are not running, calls to these services will affect production: firestore, database, pubsub, storage, eventarc 
+[debug] [2022-11-16T03:21:52.311Z] DEBUG: File C:\Users\kevin\Desktop\CSDS395_SeniorProject-main\meow-woof\functions\index.js changed, reloading triggers
+[debug] [2022-11-16T03:21:53.314Z] Validating nodejs source
+[debug] [2022-11-16T03:21:55.772Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "algoliasearch": "^4.14.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2",
+    "react-instantsearch-hooks-web": "^6.38.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true,
+  "type": "module"
+}
+[debug] [2022-11-16T03:21:55.772Z] Building nodejs source
+[debug] [2022-11-16T03:21:55.772Z] Analyzing nodejs backend spec
+[debug] [2022-11-16T03:21:55.773Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-16T03:21:55.958Z] Serving at port 9005
+
+[debug] [2022-11-16T03:21:56.201Z] Got response from /__/functions.yaml {"endpoints":{"ideaIndexAdd":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","eventFilters":{"resource":"projects/csds395-70432/databases/(default)/documents/product/{productId}"},"retry":false},"labels":{},"entryPoint":"ideaIndexAdd"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-16T03:21:56.204Z] shutdown requested via /__/quitquitquit
+
+[debug] [2022-11-16T03:21:56.211Z] [functions] Loaded functions definitions from source: ideaIndexAdd.
