@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "@algolia/recommend-js": "^1.8.0",
+    "@algolia/ui-components-horizontal-slider-react": "^1.2.1",
     "firebase": "^9.12.1",
+    "react-horizontal-slider": "^1.1.1",
     "react-scripts": "^5.0.1"
   }
 }

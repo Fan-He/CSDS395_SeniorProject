@@ -25,6 +25,7 @@
     flex: 1;
     align-items: center;
     border-radius: 24px;
+    
 }
 
 .header_searchInput {
@@ -74,3 +75,29 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.Search {
+    position: absolute;
+    border: 1px solid #184dc0;
+    top: 80px;
+    width: 600px;
+    background-color: rgba(158, 201, 226, 0);
+    overflow: hidden;
+
+}
+.searchbox{
+
+    height:40px
+}
+.hit{
+    align-items: left;
+    background-color: rgba(158, 201, 226, 0);
+}
+
+
+
+  .search-panel {
+    display: flex;
+  }
+  
+

@@ -1,19 +1,17 @@
-.productDetail {
-    /* display: flex; */
-    /* background-color: aqua; */
-}
+
 
 .productdetail_container {
     margin-top: 30px;
+    margin-left: 700px;
     display: flex;
-    width: 80%;
+    width: 60%;
     /* background-color: blanchedalmond; */
 }
 
 .productdetail_image {
     object-fit: contain;
-    width: 35%;
-    height:35%;
+    width: 10%;
+    height:10%;
 }
 
 .productdetail_info {
@@ -64,4 +62,8 @@
     margin-bottom: 20px;
     height: 30px;
 }
+.recommend{
+    margin-left: 700px;
+    width: 1000px;
 
+}
