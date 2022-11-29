@@ -11,13 +11,12 @@ import {
 } from "firebase/auth";
 import "./App.css";
 import { auth } from "./firebase-config";
+import { toast } from "react-toastify";
 
 function Login() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-
     const [user, setUser] = useState({});
-
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -26,7 +25,8 @@ function Login() {
 
     }, [])
 
-    const login = async () => {
+    const login = async (e) => {
+        e.preventDefault();
         try {
             const user = await signInWithEmailAndPassword(
                 auth,
@@ -35,8 +35,9 @@ function Login() {
             );
             console.log("success");
             console.log(user);
+
         } catch (error) {
-            console.log(error.message);
+            toast.error(error.message);
         }
     };
 
@@ -67,7 +68,7 @@ function Login() {
 
             <h5>Password</h5>
               <input
-                  type="password"
+                  type={"password"}
                   placeholder="Password"
                   onChange={(event) => {
                       setLoginPassword(event.target.value);

@@ -6,25 +6,42 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
+    updateProfile
 } from "firebase/auth";
 import "./App.css";
-import { auth } from "./firebase-config";
+import { auth, createUserDocument } from "./firebase-config";
+import { Container, Row, Col, Form, FormGroup } from "reactstrap";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { setDoc, doc } from "firebase/firestore";
+import { storage } from "./firebase-config.js";
+import { db } from "./firebase-config.js";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
 
 function Signup() {
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
+
+    const [displayName, setDisplayName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const register = async () => {
         try {
-            const user = await createUserWithEmailAndPassword(
-                auth,
-                registerEmail,
-                registerPassword
-            );
-            console.log(user);
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                     userCredential.user.updateProfile({
+                        displayName: displayName
+                    }).then(() => {
+                         // Success
+                     }).catch((e) => {
+                         // Handle errors.
+                     });
+                })
         } catch (error) {
             console.log(error.message);
         }
+
+
     };
 
     return (
@@ -36,20 +53,27 @@ function Signup() {
             <div className='login_container'>
                 <h1>Create an Account</h1>
                 <form>
+                    <h5>Name</h5>
+                    <input
+                        placeholder="Name..."
+                        onChange={(event) => {
+                            setDisplayName(event.target.value);
+                        }}
+                    />
+
                     <h5>Email</h5>
                     <input
                         placeholder="Email..."
                         onChange={(event) => {
-                            setRegisterEmail(event.target.value);
+                            setEmail(event.target.value);
                         }}
                     />
 
                     <h5>Password</h5>
                     <input
-                        type="password"
                         placeholder="Password..."
                         onChange={(event) => {
-                            setRegisterPassword(event.target.value);
+                            setPassword(event.target.value);
                         }}
                     />
                     <button className='login_signin_button' onClick={register}>Create User</button>
@@ -61,9 +85,10 @@ function Signup() {
                 </p>
             </div>
 
-            <Link to='/Login'>
-                Back to Login Page
-            </Link>
+                <p>
+                    Already have an account? <Link to="/login">Login</Link>
+                </p>
+
 
         </div>
     )

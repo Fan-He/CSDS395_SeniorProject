@@ -49,6 +49,9 @@ function Header() {
     const mapState = (state) => ({
         currentUser: state.user.currentUser
     });
+
+    let name = localStorage.getItem("name");
+
     return (
             <div className='header'>
                 <Link to="/">
@@ -79,7 +82,7 @@ function Header() {
                 <Link to="/login">
                     <div className="header_option">
                         <span className='header_optionLineOne'>
-                            Hello Guest
+                            Hello {name}
                         </span>
                         <span className='header_optionLineTwo'>
                             Sign In
