@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 import "./App.css";
 import { auth, createUserDocument } from "./firebase-config";
-import { Container, Row, Col, Form, FormGroup } from "reactstrap";
+// import { Container, Row, Col, Form, FormGroup } from "reactstrap";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
 import { storage } from "./firebase-config.js";
