@@ -1,9 +1,8 @@
 .checkout {
     display: flex;
     padding: 20px;
-    background-color:aliceblue;
+    background-color: aliceblue;
     height: max-content;
-    margin-left: 700px;
 }
 
 .checkout_ad {
@@ -17,7 +16,7 @@
     border-bottom: 1px solid lightblue;
 }
 
-.checkout_left{
+.checkout_left {
     width: 70%;
     align-items: center;
     justify-content: center;

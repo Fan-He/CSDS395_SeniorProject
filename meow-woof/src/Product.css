@@ -1,34 +1,38 @@
-.product{
+/* .product{
     display: flex;
-    flex-direction: row;
-    align-items: left;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 10px;
     padding: 20px;
     width: 100%;
-    max-height:90px;
-    max-width: 800px;
+    max-height:2000px;
+    max-width: 300px;
     background-color: white;
     z-index: 1;
 }
 
 .product > img {
     max-height: 200px;
-    width: 10%;
-    height: 10%;
+    width: 50%;
+    height: 50%;
     object-fit: contain;
     margin-bottom: 15px;
 }
 
 .product_info {
-    height: 100px;
+    height: 150px;
+    width: 200px;
     margin-bottom: 15px;
-    margin-right: 150px;
+    
     font-family: Comic Sans MS, Comic Sans, cursive;
+    
+    align-items: center;
+    justify-content: center;
 }
 
 .product_price {
-    margin-top: 5px;
+    margin: 5px;
 }
 
 .product > button {
@@ -41,5 +45,140 @@
 
 .product_rating {
     display: flex;
+} */
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+
+* {
+  margin: 10;
+  padding: 0;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+} */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 550px;
+  background: aliceblue;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px;
+  
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: rgb(98, 175, 241);
+  transform: skewY(345deg);
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+
+/* .card::after {
+  content: "CORSAIR";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.1);
+} */
+
+.card .imgBox {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+
+.card .imgBox > img {
+    max-height: 250px;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+/*
+.card .imgBox img {
+    max-width: 100%;
+    
+    transition: .5s;
+}
+
+.card:hover .imgBox img {
+    max-width: 50%;
+      
+}
+*/
+.card .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  
+}
+
+.card .contentBox h3 {
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  margin: 10px;
+}
+
+.card .contentBox .price {
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  letter-spacing: 1px;
+  
+}
+
+.card .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: #000000;
+  text-decoration: none;
+  background: rgb(129, 184, 230);
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.5s;
+  font-weight: 700;
+}
+
+.card:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}

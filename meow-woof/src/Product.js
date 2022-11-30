@@ -40,25 +40,44 @@ function Product({id, title, image, price, rating, detail}) {
   return (
     
 
-    <div className='product'>
-        <div className='product_info'>
-            <div onClick={toProductDetail} >
-              <Link>
-                <p>{title}</p>
-              </Link>
-            </div>
-            <p className='product_price'>
-                <small>$</small>
-                <strong>{price}</strong>
-            </p>
-            <div className='product_rating'>
-                {Array(rating).fill().map((_, i) => (<p>⭐</p>))}
-            </div>
-        </div>
+    // <div className='product'>
+    //     <img src={image} alt=""/>
+    //     <div className='product_info'>
+    //         <div onClick={toProductDetail} >
+    //           <Link>
+    //             <p>{title}</p>
+    //           </Link>
+    //         </div>
+    //         <p className='product_price'>
+    //             <small>$</small>
+    //             <strong>{price}</strong>
+    //         </p>
+    //         <div className='product_rating'>
+    //             {Array(rating).fill().map((_, i) => (<p>⭐</p>))}
+    //         </div>
+    //     </div>
 
-        <img src={image} alt=""/>
-        <button onClick={addToBasket}>Add to Basket</button>
-        {/* <button onClick={toProductDetail}>to detail</button> */}
+    //     {/* <img src={image} alt=""/> */}
+    //     <button onClick={addToBasket}>Add to Basket</button>
+    //     {/* <button onClick={toProductDetail}>to detail</button> */}
+    // </div>
+    <div class="card">
+
+    <div class="imgBox">
+      <img src={image} alt="mouse corsair" class="mouse"/>
+    </div>
+
+    <div class="contentBox">
+        <h3 onClick={toProductDetail} >
+               <Link>
+                 <p>{title}</p>
+               </Link>
+        </h3>
+      <h2 class="price">$<small>{price}</small></h2>
+      {/* <a href="#" class="buy">Add To Basket</a> */}
+      <button href="#" class="buy" onClick={addToBasket}>Add to Basket</button>
+    </div>
+
     </div>
   )
 }
