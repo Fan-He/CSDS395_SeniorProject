@@ -61,7 +61,11 @@ function Header() {
 
             <div className="header_search" type="text">
                 <input className='header_searchInput' type="text" />
-                <SearchIcon className="header_searchIcon"/>
+                <div>
+                    <Link to="/search">
+                        <SearchIcon className="header_searchIcon"/>
+                    </Link>
+                </div>
             </div>
 
 
