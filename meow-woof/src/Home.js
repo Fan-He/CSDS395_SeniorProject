@@ -1,12 +1,90 @@
 import React, {useEffect, useState} from 'react'
 import "./Home.css"
 import Cats from './images/cats.jpg'
+import { collection, getDocs } from "firebase/firestore";
 import Product from './Product'
 import { Link } from "react-router-dom"
-import {collection, getDocs} from "firebase/firestore";
+import {QuerySnapshot} from "firebase/firestore";
 import {db} from "./firebase-config";
 
+
+// const querySnapshot = await getDocs(collection(db, "product"));
+// querySnapshot.forEach((doc) => {
+//   // doc.data() is never undefined for query doc snapshots
+//   console.log(doc.id, " => ", doc.data());
+// });
+
+const Products = () => {
+    // const [loading, setLoading] = useState(true);
+    // const [posts, setPosts] = useState([]);
+
+    // useEffect(() => {
+    //     const getProductsFromFirebase = [];
+    //     const subscriber = db
+    //         .collection("product")
+    //         .onSnapshot((querySnapshot) => {
+    //             querySnapshot.forEach((doc) => {
+    //                 getProductsFromFirebase.push({
+    //                     ...doc.data(), 
+    //                     key: doc.title, 
+    //                 });
+    //             });
+    //             setPosts(getProductsFromFirebase);
+    //             setLoading(false);
+    //         });
+    //     return () => subscriber();
+    // }, []);
+    // if(loading){
+    //     return <h1>loading from firestore</h1>
+    // }
+    // return (
+    //     <div className='container'>
+    //         <h1>Products:</h1>
+    //         {posts.length > 0 ? (
+    //             posts.map((post) => <div key={post.title}>{post.title}</div>)
+    //         ) : (<h1>No products</h1>)}
+    //     </div>
+    // )
+}
+
+
 function Home() {
+    // const [loading, setLoading] = useState(true);
+    // const [posts, setPosts] = useState([]);
+
+    // useEffect(() => {
+    //     const getProductsFromFirebase = [];
+    //     const subscriber = db
+    //         .collection("product")
+    //         .onSnapshot((querySnapshot) => {
+    //             querySnapshot.forEach((doc) => {
+    //                 getProductsFromFirebase.push({
+    //                     ...doc.data(), 
+    //                     key: doc.title, 
+    //                 });
+    //             });
+    //             setPosts(getProductsFromFirebase);
+    //             setLoading(false);
+    //         });
+    //     return () => subscriber();
+    // }, []);
+    // if(loading){
+    //     return <h1>loading from firestore</h1>
+    // }
+    // return (
+    //     <div className='container'>
+    //         <h1>Products:</h1>
+    //         {posts.length > 0 ? (
+    //             posts.map((post) => <div key={post.title}>{post.title}</div>)
+    //         ) : (<h1>No products</h1>)}
+    //     </div>
+    // )
+
+
+
+
+
+
 
     return (
     <div className='home'>
@@ -129,6 +207,8 @@ function Home() {
                 Nutritionally balanced for feline friends from all life stages."/>
 
             </div>
+
+            
 
         </div>
     </div>
