@@ -15,7 +15,7 @@ querySnapshot.forEach((doc) => {
     const p = doc.data();
     p.Rating = parseFloat(p.Rating);
     p.Price = parseFloat(p.Price);
-    console.log(typeof p.Price);
+    // console.log(typeof p.Price);
   products.push(p);
 });
 
