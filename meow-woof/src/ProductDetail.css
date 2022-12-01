@@ -2,7 +2,7 @@
 
 .productdetail_container {
     margin-top: 30px;
-    margin-left: 700px;
+    margin-left: 100px;
     display: flex;
     width: 60%;
     /* background-color: blanchedalmond; */
@@ -10,12 +10,12 @@
 
 .productdetail_image {
     object-fit: contain;
-    width: 10%;
-    height:10%;
+    width: 20%;
+    height:20%;
 }
 
 .productdetail_info {
-    margin-left: 10px;
+    margin-left: 50px;
     /* width: 50%; */
     /* background-color: blue; */
     height: 65%;
