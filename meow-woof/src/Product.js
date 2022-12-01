@@ -74,6 +74,9 @@ function Product({id, title, image, price, rating, detail}) {
                </Link>
         </h3>
       <h2 class="price">$<small>{price}</small></h2>
+      <div className='product_rating'>
+        {Array(rating).fill().map((_, i) => (<p>⭐</p>))}
+      </div>
       {/* <a href="#" class="buy">Add To Basket</a> */}
       <button href="#" class="buy" onClick={addToBasket}>Add to Basket</button>
     </div>

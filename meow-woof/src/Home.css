@@ -3,9 +3,13 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1200px;
+    align-items: center;
+    /* max-width: 5000px; */
     flex-wrap: wrap;
+    width: 80%;
 }
+
+
 
 .home_row {
     display: flex;
@@ -14,11 +18,13 @@
     margin-right: 5px;
     justify-content: center;
     flex-wrap: wrap;
+    /* width: 100%; */
+    align-items: center;
 }
 
 
 .home_image {
-    width: 100%;
+    width: 80%;
     z-index: -5;
     margin-bottom: -100px;
     margin-top: 0;

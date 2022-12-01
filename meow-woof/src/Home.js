@@ -7,13 +7,16 @@ import { Link } from "react-router-dom"
 import {QuerySnapshot} from "firebase/firestore";
 import {db} from "./firebase-config";
 
-
 const querySnapshot = await getDocs(collection(db, "product"));
 const products = [];
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
 //   console.log(doc.id, " => ", doc.data());
-  products.push(doc.data());
+    const p = doc.data();
+    p.Rating = parseFloat(p.Rating);
+    p.Price = parseFloat(p.Price);
+    console.log(typeof p.Price);
+  products.push(p);
 });
 
 
@@ -21,11 +24,9 @@ querySnapshot.forEach((doc) => {
 function Home() {
 
 
-
-
     return (
     <div className='home'>
-            <div className='home_container'>
+        <div className='home_container'>
             <img className='home_image' src={Cats} alt=""></img>
             <div className='home_row'>
                 {products.map(data => (
