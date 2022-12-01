@@ -2,7 +2,12 @@ import React from 'react'
 
 function Contact() {
   return (
-    <div>Contact Us: CWRU</div>
+    <div>
+        <img alt="" src="https://case.edu/emails/engineering/images/csebanner.png"></img>
+        <div>
+            Contact Us: CWRU
+        </div>
+        </div>
   )
 }
 
