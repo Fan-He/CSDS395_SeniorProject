@@ -142,7 +142,6 @@
   align-items: center;
   flex-direction: column;
   z-index: 2;
-  
 }
 
 .card .contentBox h3 {
@@ -152,6 +151,13 @@
   letter-spacing: 1px;
   font-family: Comic Sans MS, Comic Sans, cursive;
   margin: 10px;
+}
+
+.card .contentBox h3 p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .card .contentBox .price {
