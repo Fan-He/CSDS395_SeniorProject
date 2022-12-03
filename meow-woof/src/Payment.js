@@ -26,12 +26,19 @@ function Payment() {
         dispatch({
             type: 'REMOVE_ALL',  
         });
-        await addDoc(collection(db, "orders"), {
+        const newOrder = await addDoc(collection(db, "orders"), {
             UID: "12345",
             products: allProducts
         });
-        // await updateDoc(user, {
-        //     "order": 
+        // db.collection("users").doc("ZB38GESd7EZaFpp96GQ5Oe51MOb2").update({
+        //     orders: {
+        //         newOrder
+        //     }
+        //   }).then(function() {
+        //     console.log("ZB38GESd7EZaFpp96GQ5Oe51MOb2 user updated");
+        // });
+        // await updateDoc(washingtonRef, {
+        //     regions: arrayUnion("greater_virginia")
         // });
     }
 
