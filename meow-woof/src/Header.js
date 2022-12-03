@@ -52,6 +52,7 @@ function Header() {
     });
 
     let name = localStorage.getItem("name");
+    let UID = localStorage.getItem("User UID");
 
     return (
         <div className='header'>

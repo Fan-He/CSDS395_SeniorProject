@@ -15,8 +15,10 @@ querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
 //   console.log(doc.id, " => ", doc.data());
     const p = doc.data();
+    const id = doc.id;
     p.Rating = parseFloat(p.Rating);
     p.Price = parseFloat(p.Price);
+    p.id = id;
     // console.log(typeof p.Price);
   products.push(p);
 });
@@ -63,7 +65,7 @@ function Home() {
             <img className='home_image' src={Cats} alt=""></img>
             <div className='home_row'>
                 {productList.map(data => (
-                    <Product title = {data.Title} price = {data.Price} rating = {data.Rating} image = {data.Image_url} detail={data.Detail}/>
+                    <Product id = {data.id} title = {data.Title} price = {data.Price} rating = {data.Rating} image = {data.Image_url} detail={data.Detail}/>
                 ))}
                 {/* <scroller listItems={productComponents} height={30}/> */}
                 {/* {productComponents} */}
