@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import './Login.css'
 import logo from '../images/logo.png'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { signInWithGoogle } from "../firebase-config";
 import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
-    signOut,
+    signOut, GoogleAuthProvider, signInWithPopup,
 } from "firebase/auth";
 import "../App.css";
 import { auth } from "../firebase-config";
-import { toast } from "react-toastify";
 
 function Login() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [user, setUser] = useState({});
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -24,21 +25,32 @@ function Login() {
 
     }, [])
 
-    const login = async (e) => {
+    const login = (e) => {
         e.preventDefault();
-        try {
-            const user = await signInWithEmailAndPassword(
-                auth,
-                loginEmail,
-                loginPassword
-            );
-            console.log("success");
-            console.log(user);
-
-        } catch (error) {
-            toast.error(error.message);
-        }
+        signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+            .then((userCredential) => {
+                // const user = userCredential.user;
+                console.log("success");
+                console.log(user);
+                navigate("/");
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     };
+
+    const provider = new GoogleAuthProvider()
+    const signInWithGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then((result) =>{
+                console.log("success");
+                console.log(user);
+                navigate("/");
+            }).catch((error) => {
+            console.log(error);
+        });
+    }
+
 
     const logout = async () => {
         await signOut(auth);
@@ -48,8 +60,6 @@ function Login() {
   return (
 
     <div className='login'>
-        <h4> User Logged In: </h4>
-        {user ? user.email : "Not Logged In"}
         <Link to='/'>
             <img className='login_logo' src={logo} alt=''/>
         </Link>

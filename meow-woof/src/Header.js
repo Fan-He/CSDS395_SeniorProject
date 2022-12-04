@@ -18,6 +18,8 @@ import {
   } from 'react-instantsearch-dom';
 import Product1 from './Product1';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {doc, getDoc} from "firebase/firestore";
+import { db } from "./firebase-config.js";
 
 const Hit = ({hit})=>
     <div className = "hit">
@@ -43,20 +45,36 @@ const searchClient = {
     },
   };
 
+async function getUserProfile(uid) {
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
+}
 
 function Header() {
     const [showHits, setShowHits] = useState(false);
     const [{basket}, dispatch] = useStateValue();
 
     const [user, setUser] = useState({});
+    const [userName, setUserName] = useState();
 
     const auth = getAuth();
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         });
-
     }, [])
+
+    useEffect(() => {
+        if (user) {
+            getUserProfile(user.uid)
+                .then(res => {
+                    if (res) {
+                        setUserName(res.name);
+                    }
+                })
+        }
+    }, [user]);
 
     const mapState = (state) => ({
         currentUser: state.user.currentUser
@@ -83,7 +101,7 @@ function Header() {
                 <Link to="/login">
                     <div className="header_option">
                         <span className='header_optionLineOne'>
-                            Hello Guest
+                            Hello {userName}
                         </span>
                         <span className='header_optionLineTwo'>
                             Sign In

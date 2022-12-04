@@ -28,6 +28,7 @@ function Signup() {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
+    const [name, setName] = useState('');
     const [orders, setOrders] = useState([]);
 
     const handleClickRegister = async () => {
@@ -37,6 +38,7 @@ function Signup() {
             const user = res.user;
             const uid = user.uid;
             await setDoc(doc(db, 'users', uid), {
+                name,
                 phone,
                 address,
                 city,
@@ -99,7 +101,7 @@ function Signup() {
                 <p>
                     <label>Name</label>
                     <br />
-                    <input placeholder={'Enter your name'} value={phone} onChange={e => setPhone(e.target.value)} />
+                    <input placeholder={'Enter your name'} value={name} onChange={e => setName(e.target.value)} />
                 </p>
                 <p>
                     <label>Phone Number</label>
