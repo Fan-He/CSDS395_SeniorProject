@@ -40,7 +40,7 @@ function Product1({id, title, image, price, rating, detail}) {
   return (
     <div className='product1'>
         <div className='product_info1'>
-            <div onClick={toProductDetail} >
+            <div className='product_info1_text' onClick={toProductDetail} >
               <Link>
                 <p>{title}</p>
               </Link>

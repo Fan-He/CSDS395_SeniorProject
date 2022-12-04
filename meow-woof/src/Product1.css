@@ -32,6 +32,13 @@
     justify-content: center;
 }
 
+.product_info1_text p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
 .product_price1 {
     margin-top: 5px;
 }
