@@ -105,8 +105,6 @@ function Login() {
             Don't have an account? <Link to="/signup">Sign up now</Link>
         </p>
 
-        <button onClick={logout}> Sign Out </button>
-
     </div>
   )
 }
