@@ -17,9 +17,9 @@ import {
     Highlight,
   } from 'react-instantsearch-dom';
 import Product1 from './Product1';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
 import {doc, getDoc} from "firebase/firestore";
-import { db } from "./firebase-config.js";
+import {auth, db} from "./firebase-config.js";
 
 const Hit = ({hit})=>
     <div className = "hit">
@@ -59,6 +59,11 @@ function Header() {
     const [userName, setUserName] = useState();
 
     const auth = getAuth();
+
+    const logout = async () => {
+        await signOut(auth);
+    };
+
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -101,7 +106,7 @@ function Header() {
                 <Link to="/login">
                     <div className="header_option">
                         <span className='header_optionLineOne'>
-                            Hello {userName}
+                            Hello {userName ? userName : "Guest"}
                         </span>
                         <span className='header_optionLineTwo'>
                             Sign In

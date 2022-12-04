@@ -101,10 +101,9 @@ function Login() {
           </p>
         </div>
 
-        <h5>Don't have an account? </h5>
-        <Link to="/signup">
-            <button className='login_register_button'>Create Account</button>
-        </Link>
+        <p>
+            Don't have an account? <Link to="/signup">Sign up now</Link>
+        </p>
 
         <button onClick={logout}> Sign Out </button>
 
