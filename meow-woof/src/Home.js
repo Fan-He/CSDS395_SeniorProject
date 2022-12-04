@@ -29,10 +29,6 @@ querySnapshot.forEach((doc) => {
 
 
 
-
-
-
-
 function Home() {
 
     const [productList, setProductList] = useState([]);

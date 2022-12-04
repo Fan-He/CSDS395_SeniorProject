@@ -6,7 +6,7 @@ import BasketProduct from './BasketProduct';
 import { Link } from "react-router-dom"
 import { doc, setDoc, addDoc, updateDoc } from "firebase/firestore"; 
 import {db} from "./firebase-config";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, arrayUnion, arrayRemove  } from "firebase/firestore";
 
 
 const newOrder = doc(collection(db, "orders"));
@@ -26,20 +26,23 @@ function Payment() {
         dispatch({
             type: 'REMOVE_ALL',  
         });
+
+        //Great code
         const newOrder = await addDoc(collection(db, "orders"), {
             UID: "12345",
             products: allProducts
         });
-        // db.collection("users").doc("ZB38GESd7EZaFpp96GQ5Oe51MOb2").update({
-        //     orders: {
-        //         newOrder
-        //     }
-        //   }).then(function() {
-        //     console.log("ZB38GESd7EZaFpp96GQ5Oe51MOb2 user updated");
-        // });
-        // await updateDoc(washingtonRef, {
-        //     regions: arrayUnion("greater_virginia")
-        // });
+        
+        console.log("Order is: ");
+        console.log(newOrder.id);
+
+        //----------------------------------------------------------------------------------------------
+        //Needs to be updated with currently logged in user id to replace "123123"
+        const currentUser = doc(db, "users", "123123");
+        //----------------------------------------------------------------------------------------------
+        await updateDoc(currentUser, {
+            orders: arrayUnion(newOrder.id)
+        });
     }
 
 
