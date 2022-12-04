@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import './Login.css'
-import logo from './images/logo.png'
-import { Link } from "react-router-dom"
-import { signInWithGoogle } from "./firebase-config";
+import logo from '../images/logo.png'
+import { Link, useNavigate } from "react-router-dom"
+import { signInWithGoogle } from "../firebase-config";
 import {
-    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
-    signOut,
+    signOut, GoogleAuthProvider, signInWithPopup,
 } from "firebase/auth";
-import "./App.css";
-import { auth } from "./firebase-config";
-import { toast } from "react-toastify";
+import "../App.css";
+import { auth } from "../firebase-config";
 
 function Login() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [user, setUser] = useState({});
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -25,21 +25,32 @@ function Login() {
 
     }, [])
 
-    const login = async (e) => {
+    const login = (e) => {
         e.preventDefault();
-        try {
-            const user = await signInWithEmailAndPassword(
-                auth,
-                loginEmail,
-                loginPassword
-            );
-            console.log("success");
-            console.log(user);
-
-        } catch (error) {
-            toast.error(error.message);
-        }
+        signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+            .then((userCredential) => {
+                // const user = userCredential.user;
+                console.log("success");
+                console.log(user);
+                navigate("/");
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     };
+
+    const provider = new GoogleAuthProvider()
+    const signInWithGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then((result) =>{
+                console.log("success");
+                console.log(user);
+                navigate("/");
+            }).catch((error) => {
+            console.log(error);
+        });
+    }
+
 
     const logout = async () => {
         await signOut(auth);
@@ -49,8 +60,6 @@ function Login() {
   return (
 
     <div className='login'>
-        <h4> User Logged In: </h4>
-        {user ? user.email : "Not Logged In"}
         <Link to='/'>
             <img className='login_logo' src={logo} alt=''/>
         </Link>
@@ -92,10 +101,9 @@ function Login() {
           </p>
         </div>
 
-        <h5>Don't have an account? </h5>
-        <Link to="/signup">
-            <button className='login_register_button'>Create Account</button>
-        </Link>
+        <p>
+            Don't have an account? <Link to="/signup">Sign up now</Link>
+        </p>
 
         <button onClick={logout}> Sign Out </button>
 

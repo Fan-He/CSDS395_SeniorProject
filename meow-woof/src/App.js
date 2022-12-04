@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Header';
 import Home from "./Home"
 import Checkout from "./Checkout"
-import Login from "./Login"
+import Login from "./auth/Login"
 import ProductDetail from './ProductDetail'
 import Payment from './Payment'
 import Search from './Search'
@@ -12,7 +12,7 @@ import OrderHistory from './OrderHistory'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { db } from './firebase-config'
 import { collection, getDocs } from 'firebase/firestore'
-import Signup from "./Signup";
+import Signup from "./auth/Signup";
 
 function App() {
     
