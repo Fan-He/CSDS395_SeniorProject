@@ -8,6 +8,7 @@ import ProductDetail from './ProductDetail'
 import Payment from './Payment'
 import Search from './Search'
 import Contact from './Contact'
+import OrderHistory from './OrderHistory'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { db } from './firebase-config'
 import { collection, getDocs } from 'firebase/firestore'
@@ -29,6 +30,7 @@ function App() {
             <Route path='/payment' element={[<Header/>, <Payment/>]}/>
             <Route path='/search' element={[<Header/>, <Search/>]}/>
             <Route path='/contact' element={[<Header/>, <Contact/>]}/>
+            <Route path='/orderhistory' element={[<Header/>, <OrderHistory/>]}/>
         </Routes>
       </div>
     </Router>

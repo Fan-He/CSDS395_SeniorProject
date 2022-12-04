@@ -4,11 +4,48 @@ import { useState, useEffect } from 'react'
 import { useStateValue } from './StateProvider'
 import BasketProduct from './BasketProduct';
 import { Link } from "react-router-dom"
+import { doc, setDoc, addDoc, updateDoc } from "firebase/firestore"; 
+import {db} from "./firebase-config";
+import { collection, getDocs, arrayUnion, arrayRemove  } from "firebase/firestore";
+
+
+const newOrder = doc(collection(db, "orders"));
 
 function Payment() {
 
     const [user] = useState({});
     const [{ basket }, dispatch] = useStateValue();
+
+    const allProducts = [];
+
+    async function placeOrder() {
+        basket.forEach(element => {
+            allProducts.push(element.id);
+            console.log(element.id);
+        });
+        dispatch({
+            type: 'REMOVE_ALL',  
+        });
+
+        //Great code
+        const newOrder = await addDoc(collection(db, "orders"), {
+            UID: "12345",
+            products: allProducts
+        });
+        
+        console.log("Order is: ");
+        console.log(newOrder.id);
+
+        //----------------------------------------------------------------------------------------------
+        //Needs to be updated with currently logged in user id to replace "123123"
+        const currentUser = doc(db, "users", "123123");
+        //----------------------------------------------------------------------------------------------
+        await updateDoc(currentUser, {
+            orders: arrayUnion(newOrder.id)
+        });
+    }
+
+
 
   return (
     <div className='payment'>
@@ -55,6 +92,12 @@ function Payment() {
                 </div>
                 <div className='payment_detail'>
                     {/* stripe stuffs */}
+                </div>
+                
+            </div>
+            <div className='payment_section'>
+                <div className='patment_placeOrder'>
+                    <button onClick={placeOrder}>Place Order</button>
                 </div>
                 
             </div>

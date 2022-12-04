@@ -2,6 +2,8 @@
 //push and pull data
 //always listening
 
+import { startTransition } from "react";
+
 export const initialState = {
     basket: []
 };
@@ -29,7 +31,10 @@ const reducer = (state, action) => {
                 ...state, 
                 basket: newBasket
             }
-
+        case "REMOVE_ALL": 
+            return {
+                ...initialState, 
+            }
         default: 
             return state;
     }

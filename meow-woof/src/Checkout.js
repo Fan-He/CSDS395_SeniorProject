@@ -10,7 +10,6 @@ function Checkout() {
 
   const [{ basket }, dispatch] = useStateValue();
   const [user] = useState({});
-  console.log("user is "+user.email);
 
 
   return (
