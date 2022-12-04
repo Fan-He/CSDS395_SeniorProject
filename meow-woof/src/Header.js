@@ -17,6 +17,7 @@ import {
     Highlight,
   } from 'react-instantsearch-dom';
 import Product1 from './Product1';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Hit = ({hit})=>
     <div className = "hit">
@@ -47,11 +48,19 @@ function Header() {
     const [showHits, setShowHits] = useState(false);
     const [{basket}, dispatch] = useStateValue();
 
+    const [user, setUser] = useState({});
+
+    const auth = getAuth();
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+
+    }, [])
+
     const mapState = (state) => ({
         currentUser: state.user.currentUser
     });
-
-    let name = localStorage.getItem("name");
 
     return (
         <div className='header'>
@@ -74,7 +83,7 @@ function Header() {
                 <Link to="/login">
                     <div className="header_option">
                         <span className='header_optionLineOne'>
-                            Hello {name}
+                            Hello Guest
                         </span>
                         <span className='header_optionLineTwo'>
                             Sign In

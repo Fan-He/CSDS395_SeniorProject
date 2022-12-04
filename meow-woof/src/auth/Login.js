@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import './Login.css'
-import logo from './images/logo.png'
+import logo from '../images/logo.png'
 import { Link } from "react-router-dom"
-import { signInWithGoogle } from "./firebase-config";
+import { signInWithGoogle } from "../firebase-config";
 import {
-    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
-import "./App.css";
-import { auth } from "./firebase-config";
+import "../App.css";
+import { auth } from "../firebase-config";
 import { toast } from "react-toastify";
 
 function Login() {
