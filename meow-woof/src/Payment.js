@@ -4,19 +4,52 @@ import { useState, useEffect } from 'react'
 import { useStateValue } from './StateProvider'
 import BasketProduct from './BasketProduct';
 import { Link } from "react-router-dom"
-import { doc, setDoc, addDoc, updateDoc } from "firebase/firestore"; 
+import {doc, setDoc, addDoc, updateDoc, getDoc} from "firebase/firestore";
 import {db} from "./firebase-config";
 import { collection, getDocs, arrayUnion, arrayRemove  } from "firebase/firestore";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 
 const newOrder = doc(collection(db, "orders"));
 
-function Payment() {
+async function getUserProfile(uid) {
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
+}
 
-    const [user] = useState({});
+function Payment() {
+    const [user, setUser] = useState({});
     const [{ basket }, dispatch] = useStateValue();
+    const [userAddress, setUserAddress] = useState("");
+    const [userCity, setUserCity] = useState("");
+    const [userState, setUserState] = useState("");
+    const [userZip, setUserZip] = useState("");
+    const [userName, setUserName] = useState("");
 
     const allProducts = [];
+    const auth = getAuth();
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    }, [])
+
+    useEffect(() => {
+        if (user) {
+            getUserProfile(user.uid)
+                .then(res => {
+                    if (res) {
+                        setUserAddress(res.address);
+                        setUserCity(res.city);
+                        setUserState(res.state);
+                        setUserZip(res.zip);
+                        setUserName(res.name)
+                    }
+                })
+        }
+    }, [user]);
 
     async function placeOrder() {
         basket.forEach(element => {
@@ -29,7 +62,7 @@ function Payment() {
 
         //Great code
         const newOrder = await addDoc(collection(db, "orders"), {
-            UID: "12345",
+            UID: user.uid,
             products: allProducts
         });
         
@@ -38,14 +71,12 @@ function Payment() {
 
         //----------------------------------------------------------------------------------------------
         //Needs to be updated with currently logged in user id to replace "123123"
-        const currentUser = doc(db, "users", "123123");
+        const currentUser = doc(db, "users", user.uid);
         //----------------------------------------------------------------------------------------------
         await updateDoc(currentUser, {
             orders: arrayUnion(newOrder.id)
         });
     }
-
-
 
   return (
     <div className='payment'>
@@ -61,9 +92,9 @@ function Payment() {
                     <h3>Delivery Address: </h3>
                 </div>
                 <div className='payment_address'>
-                    <p>{user?.email}</p>
-                    <p>10900 Euclid Ave</p>
-                    <p>Cleveland, OH 44106</p>
+                    <p>{userName}</p>
+                    <p>{userAddress}</p>
+                    <p>{userCity}, {userState} {userZip}</p>
                 </div>
 
             </div>
