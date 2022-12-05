@@ -1,0 +1,25 @@
+.order{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    width: 80%;
+    border: solid aliceblue;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgb(177, 211, 238);;
+}
+
+.order_products {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

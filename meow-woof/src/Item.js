@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "./firebase-config";
+import "./Item.css"
 
 async function getProducts(pid) {
     const docRef = doc(db, "product", pid);
@@ -11,6 +12,7 @@ async function getProducts(pid) {
 function Item({item}){
     const [price, setPrice] = useState(" ");
     const [title, setTitle] = useState(" ");
+    const [image, setImage] = useState(" ");
 
     useEffect(() => {
         if (item) {
@@ -18,7 +20,8 @@ function Item({item}){
                 .then(res => {
                     if (res) {
                         setPrice(res.Price);
-                        setTitle(res.Title)
+                        setTitle(res.Title);
+                        setImage(res.Image_url);
                     }
                 })
         }
@@ -28,10 +31,17 @@ function Item({item}){
     }, [item]);
 
     return(
-        <div className = 'order'>
-            <h3>ProductID: {item}</h3>
+        <div className = 'item'>
+            {/* <h3>ProductID: {item}</h3>
             <p>{title}</p>
-            <p>Price: {price}</p>
+            <p>Price: {price}</p> */}
+            <div className='item_img'>
+                <img src={image}/>
+            </div>
+            <div className='item_info'>
+                <p>{title}</p>
+                <p>Price: ${price}</p>
+            </div>
         </div>
 
     )

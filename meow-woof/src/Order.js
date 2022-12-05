@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "./firebase-config";
 import Item from "./Item"
+import "./Order.css"
 
 async function getOrderDetails(oid) {
     const docRef = doc(db, "orders", oid);
@@ -24,11 +25,13 @@ function Order({order}){
     }, [order]);
 
     return(
-        <div className = 'order'>
+        <div className='order'>
             <h2>OrderID: {order}</h2>
-            {products?.map(item => (
-                <Item item={item} />
-            ))}
+            <div className='order_products'>
+                {products?.map(item => (
+                    <Item item={item} />
+                ))}
+            </div>
         </div>
 
     )

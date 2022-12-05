@@ -5,6 +5,7 @@ import OrderBlock from './OrderBlock'
 import {useEffect, useState} from "react";
 import {onAuthStateChanged, getAuth} from "firebase/auth";
 import Order from "./Order"
+import "./OrderHistory.css"
 
 async function getUserProfile(uid) {
     const docRef = doc(db, "users", uid);
