@@ -9,6 +9,8 @@
     border: solid aliceblue;
     height: 200px;
     margin: 2px;
+    background-color: white;
+    border-radius: 15px;
 }
 
 .item_info p {
