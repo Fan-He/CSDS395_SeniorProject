@@ -29,6 +29,13 @@
     flex: 0.8;
 }
 
+.payment_subtotal {
+    flex: 0.2;
+    /* margin-left: auto;
+    margin-right: auto; */
+    font-size: 20px;
+}
+
 .payment_section button {
     background:rgb(129, 184, 230);
     border-radius: 5px;
@@ -38,5 +45,11 @@
     margin-top: 10px;
     color:black;
     font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.payment_placeOrder {
+    flex: 0.2;
+    margin-left: auto;
+    margin-right: auto;
 }
 

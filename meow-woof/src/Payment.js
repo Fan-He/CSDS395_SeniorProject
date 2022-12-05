@@ -8,6 +8,8 @@ import {doc, setDoc, addDoc, updateDoc, getDoc} from "firebase/firestore";
 import {db} from "./firebase-config";
 import { collection, getDocs, arrayUnion, arrayRemove  } from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
+import CurrencyFormat from "react-currency-format"
+import { getTotalInBasket } from "./reducer"
 
 
 const newOrder = doc(collection(db, "orders"));
@@ -56,26 +58,31 @@ function Payment() {
             allProducts.push(element.id);
             console.log(element.id);
         });
-        dispatch({
-            type: 'REMOVE_ALL',  
-        });
+        if(allProducts.length > 0){
+            dispatch({
+                type: 'REMOVE_ALL',  
+            });
 
-        //Great code
-        const newOrder = await addDoc(collection(db, "orders"), {
-            UID: user.uid,
-            products: allProducts
-        });
-        
-        console.log("Order is: ");
-        console.log(newOrder.id);
+            //Great code
+            const newOrder = await addDoc(collection(db, "orders"), {
+                UID: user.uid,
+                products: allProducts
+            });
+            
+            console.log("Order is: ");
+            console.log(newOrder.id);
 
-        //----------------------------------------------------------------------------------------------
-        //Needs to be updated with currently logged in user id to replace "123123"
-        const currentUser = doc(db, "users", user.uid);
-        //----------------------------------------------------------------------------------------------
-        await updateDoc(currentUser, {
-            orders: arrayUnion(newOrder.id)
-        });
+            //----------------------------------------------------------------------------------------------
+            //Needs to be updated with currently logged in user id to replace "123123"
+            const currentUser = doc(db, "users", user.uid);
+            //----------------------------------------------------------------------------------------------
+            await updateDoc(currentUser, {
+                orders: arrayUnion(newOrder.id)
+            });
+        }
+        else{
+            alert("The shopping basket is empty!");
+        }
     }
 
   return (
@@ -116,9 +123,29 @@ function Payment() {
                     ))}
                 </div>
             </div>
+
+            <div className='payment_section'>
+                <div className='payment_subtotal'>
+                    <CurrencyFormat
+                        renderText={(value) => (
+                            <>
+                            <p>
+                                Subtotal ({basket.length} items): <strong>{value}</strong>
+                            </p>
+                        </>
+                        )}
+                        decimalScale={2}
+                        value = {getTotalInBasket(basket)}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"$"}
+                    />
+                </div>
+            </div>
+
             {/* payment method */}
             <div className='payment_section'>
-                <div className='patment_title'>
+                <div className='payment_title'>
                     <h3>Payment Method</h3>
                 </div>
                 <div className='payment_detail'>
@@ -127,7 +154,7 @@ function Payment() {
                 
             </div>
             <div className='payment_section'>
-                <div className='patment_placeOrder'>
+                <div className='payment_placeOrder'>
                     <button onClick={placeOrder}>Place Order</button>
                 </div>
                 
