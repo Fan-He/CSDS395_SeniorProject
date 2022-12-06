@@ -10,9 +10,12 @@ import { collection, getDocs, arrayUnion, arrayRemove  } from "firebase/firestor
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import CurrencyFormat from "react-currency-format"
 import { getTotalInBasket } from "./reducer"
+import { useNavigate } from "react-router-dom"
 
 
 const newOrder = doc(collection(db, "orders"));
+
+
 
 async function getUserProfile(uid) {
     const docRef = doc(db, "users", uid);
@@ -28,6 +31,7 @@ function Payment() {
     const [userState, setUserState] = useState("");
     const [userZip, setUserZip] = useState("");
     const [userName, setUserName] = useState("");
+    const navigate = useNavigate();
 
     const allProducts = [];
     const auth = getAuth();
@@ -79,7 +83,8 @@ function Payment() {
             await updateDoc(currentUser, {
                 orders: arrayUnion(newOrder.id)
             });
-            alert("Order Placed! Thank you!");
+            // alert("Order Placed! Thank you!");
+            navigate('/thanks');
         }
         else{
             alert("The shopping basket is empty!");

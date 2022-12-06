@@ -107,16 +107,20 @@ function Header() {
                         {userName ? (
                             <span className='header_optionLineOne'>Hello {userName}
                                 <br/>
-                            <Link to="/login" onClick={logout}>
-                                Log Out
-                            </Link>
+                            <span className='header_optionLineTwo'>
+                                <Link to="/login" onClick={logout}>
+                                    Log Out
+                                </Link>                            
+                            </span>
                             </span>
                         ) : (
                             <span className='header_optionLineOne'>Hello Guest
                                 <br/>
-                            <Link to="/login">
-                                Sign In
-                            </Link>
+                            <span className='header_optionLineTwo'>
+                                <Link to="/login">
+                                    Sign In
+                                </Link>
+                            </span>
                             </span>
                         )}
                     </div>

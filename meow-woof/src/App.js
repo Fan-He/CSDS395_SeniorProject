@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { db } from './firebase-config'
 import { collection, getDocs } from 'firebase/firestore'
 import Signup from "./auth/Signup";
+import Thanks from "./Thanks";
 
 function App() {
     
@@ -31,6 +32,7 @@ function App() {
             <Route path='/search' element={[<Header/>, <Search/>]}/>
             <Route path='/contact' element={[<Header/>, <Contact/>]}/>
             <Route path='/orderhistory' element={[<Header/>, <OrderHistory/>]}/>
+            <Route path='/thanks' element={[<Header/>, <Thanks/>]}/>
         </Routes>
       </div>
     </Router>
