@@ -88,14 +88,6 @@ function Login() {
 
             <hr className="my-4" />
 
-            <div className="divider d-flex align-items-center my-4">
-                <p className="text-center fw-bold mx-3 mb-0">OR</p>
-            </div>
-
-            <button onClick={signInWithGoogle} type="button" className="login-with-google-btn">
-                Sign in with Google
-            </button>
-
           <p>
             By Signing-in you agree to Meow&Woof's Privacy Policy and Terms of Use.
           </p>
