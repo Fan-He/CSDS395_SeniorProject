@@ -88,7 +88,7 @@ function ProductDetail({id}) {
          objectIDs={[location.state.id]}
          view={HorizontalSlider}
          itemComponent={RelatedItem}    
-         maxRecommendations = {3}/>
+         maxRecommendations = {5}/>
         </div>
     </div>
     

@@ -6,7 +6,7 @@ import Product from './Product'
 import { Link } from "react-router-dom"
 import {QuerySnapshot} from "firebase/firestore";
 import {db} from "./firebase-config";
-
+import {useLocation} from 'react-router-dom';
 
 const querySnapshot = await getDocs(collection(db, "product"));
 const products = [];
@@ -61,7 +61,7 @@ function Home() {
             <img className='home_image' src={Cats} alt=""></img>
             <div className='home_row'>
                 {productList.map(data => (
-                    <Product id = {data.id} title = {data.Title} price = {data.Price} rating = {data.Rating} image = {data.Image_url} detail={data.Detail}/>
+                    <Product id = {data.objectID} title = {data.Title} price = {data.Price} rating = {data.Rating} image = {data.Image_url} detail={data.Detail}/>
                 ))}
                 {/* <scroller listItems={productComponents} height={30}/> */}
                 {/* {productComponents} */}
