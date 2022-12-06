@@ -79,6 +79,7 @@ function Payment() {
             await updateDoc(currentUser, {
                 orders: arrayUnion(newOrder.id)
             });
+            alert("Order Placed! Thank you!");
         }
         else{
             alert("The shopping basket is empty!");
