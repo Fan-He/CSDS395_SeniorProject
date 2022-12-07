@@ -37,6 +37,7 @@ function ProductDetail({id}) {
     return (
         <div className = "result">
             <Product
+                id={item.id}
                 objectID={item.objectID} 
                 title={item.title}
                 image={item.image_url}
