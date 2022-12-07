@@ -21,6 +21,7 @@ function ProductDetail({id}) {
           type: 'ADD_TO_BASKET', 
           item: {
             id: location.state.id, 
+            objectID: location.state.objectID,
             title: location.state.title, 
             image: location.state.image, 
             price: location.state.price, 
@@ -36,7 +37,7 @@ function ProductDetail({id}) {
     return (
         <div className = "result">
             <Product
-                id={item.objectID} 
+                objectID={item.objectID} 
                 title={item.title}
                 image={item.image_url}
                 price={item.price} 
@@ -85,7 +86,7 @@ function ProductDetail({id}) {
         <RelatedProducts
          recommendClient={recommendClient}
          indexName={"Pet_Product"}
-         objectIDs={[location.state.id]}
+         objectIDs={[location.state.objectID]}
          view={HorizontalSlider}
          itemComponent={RelatedItem}    
          maxRecommendations = {5}/>

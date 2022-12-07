@@ -3,7 +3,7 @@ import './BasketProduct.css'
 import { useStateValue } from './StateProvider'
 import { Link, useNavigate } from "react-router-dom"
 
-function BasketProduct({id, image, title, price, rating, detail}) {
+function BasketProduct({id, objectID , image, title, price, rating, detail}) {
 
 
     const removeFromBasket = () => {
@@ -17,7 +17,7 @@ function BasketProduct({id, image, title, price, rating, detail}) {
 
     const navigate = useNavigate();
 
-    const toProductDetail=()=>{navigate('/productdetail',{state:{id: id, title:title, image:image, price:price, rating:rating, detail:detail}});console.log("title is clicked");
+    const toProductDetail=()=>{navigate('/productdetail',{state:{id: id, objectID:objectID, title:title, image:image, price:price, rating:rating, detail:detail}});console.log("title is clicked");
     }
 
 

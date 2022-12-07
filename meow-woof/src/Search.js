@@ -21,7 +21,7 @@ const Hit = ({hit})=>
     <div className = "hit">
         <div className = "result">
             <Product1
-                id={hit.objectID} 
+                objectID={hit.objectID} 
                 title={hit.title}
                 image={hit.image_url}
                 price={hit.price} 

@@ -61,7 +61,13 @@ function Home() {
             <img className='home_image' src={Cats} alt=""></img>
             <div className='home_row'>
                 {productList.map(data => (
-                    <Product id = {data.id} title = {data.Title} price = {data.Price} rating = {data.Rating} image = {data.Image_url} detail={data.Detail}/>
+                    <Product id = {data.id} 
+                     objectID = {data.objectID} 
+                     title = {data.Title} 
+                     price = {data.Price}
+                     rating = {data.Rating} 
+                     image = {data.Image_url} 
+                     detail={data.Detail}/>
                 ))}
                 {/* <scroller listItems={productComponents} height={30}/> */}
                 {/* {productComponents} */}

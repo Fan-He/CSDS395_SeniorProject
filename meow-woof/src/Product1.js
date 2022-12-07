@@ -4,7 +4,7 @@ import { useStateValue } from "./StateProvider"
 import { Link, useNavigate } from "react-router-dom"
 
 
-function Product1({id, title, image, price, rating, detail}) {
+function Product1({id,objectID, title, image, price, rating, detail}) {
 
   const [{ basket }, dispatch] = useStateValue();
 
@@ -14,7 +14,7 @@ function Product1({id, title, image, price, rating, detail}) {
 
   const navigate = useNavigate();
 
-  const toProductDetail=()=>{navigate('/productdetail',{state:{id: id, title:title, image:image, price:price, rating:rating, detail:detail}});console.log("title is clicked");
+  const toProductDetail=()=>{navigate('/productdetail',{state:{id: id, objectID:objectID, title:title, image:image, price:price, rating:rating, detail:detail}});console.log("title is clicked");
   }
 
   const clickTitle=()=>{console.log("title is clicked");
@@ -28,6 +28,7 @@ function Product1({id, title, image, price, rating, detail}) {
       type: 'ADD_TO_BASKET', 
       item: {
         id: id, 
+        objectID:objectID,
         title: title, 
         image: image, 
         price: price, 
